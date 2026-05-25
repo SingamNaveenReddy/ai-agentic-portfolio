@@ -1,4 +1,4 @@
-from agentic_portfolio.rag_assistant import answer_question, retrieve
+from ai_projects.rag_assistant import answer_question, retrieve
 
 
 def test_retrieve_returns_ranked_chunks_for_relevant_question():
@@ -10,7 +10,7 @@ def test_retrieve_returns_ranked_chunks_for_relevant_question():
 
 
 def test_answer_includes_citations():
-    result = answer_question("What makes an AI portfolio strong?")
+    result = answer_question("What makes an AI project strong?")
 
     assert result["citations"]
     assert "local knowledge base" in result["answer"]

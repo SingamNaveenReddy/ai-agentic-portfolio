@@ -1,4 +1,4 @@
-from agentic_portfolio.eval_harness import run_evaluation
+from ai_projects.eval_harness import run_evaluation
 
 
 def test_evaluation_harness_passes_baseline_cases():

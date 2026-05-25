@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ai-agentic-portfolio"
+name = "ai-agentic-projects"
 version = "0.1.0"
-description = "Portfolio projects for AI agents, RAG, and LLM evaluation."
+description = "AI projects for agents, RAG, and evaluation workflows."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{ name = "Naveen Reddy" }]
@@ -16,7 +16,7 @@ dev = ["pytest>=8.0"]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["agentic_portfolio*"]
+include = ["ai_projects*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

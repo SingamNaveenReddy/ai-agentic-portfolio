@@ -1,4 +1,4 @@
-from agentic_portfolio.research_agent import ResearchBriefAgent
+from ai_projects.research_agent import ResearchBriefAgent
 
 
 def test_research_agent_writes_cited_brief():

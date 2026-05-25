@@ -1,16 +1,17 @@
-# AI Agentic Portfolio
+# AI Agentic Projects
 
-Practical AI engineering projects focused on agents, retrieval, evaluation, and data workflows. The goal of this repo is to show how I think about building AI systems that are useful, testable, and explainable.
+A collection of small AI engineering projects focused on agents, retrieval, evaluation, and multi-step workflows. Each project is kept in its own folder with a short report, runnable code, and tests.
 
-## What Is Inside
+## Projects
 
-| Project | What it demonstrates | Entry point |
+| Folder | Project | Focus |
 | --- | --- | --- |
-| Research Brief Agent | Agent loop with planning, tool use, source grounding, and report writing | `python -m agentic_portfolio.research_agent` |
-| Local RAG Assistant | Chunking, retrieval, citation-aware answers, and deterministic fallback behavior | `python -m agentic_portfolio.rag_assistant` |
-| LLM Evaluation Harness | Regression-style checks for AI outputs using groundedness, coverage, and format metrics | `python -m agentic_portfolio.eval_harness` |
+| `projects/research-brief-agent` | Research Brief Agent | Planning, retrieval, cited report generation, self-checking |
+| `projects/local-rag-assistant` | Local RAG Assistant | Chunking, retrieval, citation-aware question answering |
+| `projects/llm-evaluation-harness` | LLM Evaluation Harness | Deterministic checks for groundedness and required concept coverage |
+| `projects/multi-agent-task-planner` | Multi-Agent Task Planner | Planner, worker, and reviewer style task coordination |
 
-All examples run locally with the Python standard library. That makes the repo easy to review, test, and extend before connecting external model APIs.
+The examples use local Markdown data and standard-library Python so they can run without API keys.
 
 ## Quick Start
 
@@ -21,63 +22,48 @@ python -m pip install -e ".[dev]"
 pytest
 ```
 
-Run the demos:
+## Run Examples
 
 ```bash
-python -m agentic_portfolio.research_agent
-python -m agentic_portfolio.rag_assistant --question "How should I evaluate a RAG system?"
-python -m agentic_portfolio.eval_harness
+python projects/research-brief-agent/run.py
+python projects/local-rag-assistant/run.py
+python projects/llm-evaluation-harness/run.py
+python projects/multi-agent-task-planner/run.py
 ```
 
-## Design Notes
+The same modules can also be run directly:
 
-### Research Brief Agent
+```bash
+python -m ai_projects.research_agent
+python -m ai_projects.rag_assistant --question "How should I evaluate a RAG system?"
+python -m ai_projects.eval_harness
+python -m ai_projects.task_planner
+```
 
-The research agent uses a small planner-executor pattern:
-
-1. Build a task plan from the user question.
-2. Search a local knowledge base.
-3. Extract relevant evidence.
-4. Generate a short brief with citations.
-5. Run a self-check for missing evidence.
-
-This mirrors production agent design without hiding the logic behind a black-box framework.
-
-### Local RAG Assistant
-
-The RAG assistant implements document loading, sentence chunking, token scoring, retrieval, and answer synthesis. It favors transparent ranking over complex dependencies so the retrieval behavior is easy to debug.
-
-### Evaluation Harness
-
-The evaluator treats AI behavior like software behavior. It runs fixed cases and reports:
-
-- citation coverage
-- answer groundedness
-- required concept coverage
-- concise JSON output for CI
-
-## Repository Structure
+## Structure
 
 ```text
-agentic_portfolio/
+projects/
+  research-brief-agent/
+  local-rag-assistant/
+  llm-evaluation-harness/
+  multi-agent-task-planner/
+ai_projects/
   common.py
   research_agent.py
   rag_assistant.py
   eval_harness.py
+  task_planner.py
 data/
-  knowledge_base/*.md
+  knowledge_base/
+docs/
+  PROJECT_REPORT.md
 tests/
-  test_*.py
-.github/workflows/ci.yml
 ```
 
-## Next Improvements
+## Notes
 
-- Add an OpenAI/LangChain/LlamaIndex adapter while keeping local fallback tests.
-- Add a Streamlit or FastAPI UI for the RAG assistant.
-- Add prompt/version tracking for evaluation runs.
-- Add Docker support for repeatable demos.
-
-## Why This Repo Matters
-
-Hiring managers usually look for more than notebooks. This repo is built to show end-to-end AI engineering habits: clean code, reproducible examples, tests, documentation, and the ability to explain tradeoffs.
+- The code is intentionally simple and readable.
+- The projects use deterministic local logic first.
+- External LLM APIs can be added later behind the same project interfaces.
+- Tests and CI are included so changes can be checked automatically.

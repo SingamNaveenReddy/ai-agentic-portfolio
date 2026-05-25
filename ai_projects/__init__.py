@@ -1,8 +1,9 @@
-"""Small, reviewable AI engineering demos for the portfolio."""
+"""Small, reviewable AI engineering projects."""
 
 __all__ = [
     "common",
     "research_agent",
     "rag_assistant",
     "eval_harness",
+    "task_planner",
 ]

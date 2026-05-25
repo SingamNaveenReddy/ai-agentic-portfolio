@@ -65,7 +65,7 @@ class ResearchBriefAgent:
 
 def main() -> None:
     agent = ResearchBriefAgent()
-    brief, state = agent.run("What makes an AI agent portfolio strong?")
+    brief, state = agent.run("What makes an AI project collection strong?")
     print(brief)
     print("\nSelf-check:", "; ".join(state.self_check))
 
